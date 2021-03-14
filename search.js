@@ -1,4 +1,5 @@
 //Currently does not fetch the JSON file containing clinic data 
+/*
 const clinic_data = [
 	{"Name":"Weare Animal Hospital, Inc. Exotic and Bird Clinic of New Hampshire","Street":"91 North Stark Highway","City":"Weare","State":"NH","Zipcode":"3281"},
 	{"Name":"Patton Chapel Animal Clinic","Street":"1234 test","City":"Hoover","State":"AL","Zipcode":"12345"},
@@ -12,10 +13,11 @@ const clinic_data = [
 	{"Name":"West Stanly Animal Clinic","Street":"237 Town Centre Drive","City":"Locust","State":"NC","Zipcode":"28097"},
 	{"Name":"Vetcor Jackson Veterinary Practice, P.A.","Street":"1925 A1A South","City":"St Augustine","State":"FL","Zipcode":"32080"}
 ];
+*/
 
 fetch('Veterinary_clinic_data.json')
 .then(response => response.json())
-.then(clinic_data => {
+.then(const clinic_data => {
   console.log(clinic_data) // Prints result from `response.json()` in getRequest
 })
 .catch(error => console.error(error))
