@@ -15,7 +15,7 @@ const clinic_data = [
 ];
 */
 
-fetch('Veterinary_clinic_data.json')
+fetch('./Veterinary_clinic_data.json')
 .then(response => response.json())
 .then(const clinic_data => {
   console.log(clinic_data) // Prints result from `response.json()` in getRequest
