@@ -13,6 +13,13 @@ const clinic_data = [
 	{"Name":"Vetcor Jackson Veterinary Practice, P.A.","Street":"1925 A1A South","City":"St Augustine","State":"FL","Zipcode":"32080"}
 ];
 
+fetch('https://api.github.com/PavithS/VetCheck/Veterinary_clinic_data.json')
+.then(response => response.json())
+.then(clinic_data => {
+  console.log(clinic_data) // Prints result from `response.json()` in getRequest
+})
+.catch(error => console.error(error))
+
 function setList(group) {
 	clearList();
 	for (const clinic of group) {
