@@ -1,5 +1,4 @@
-//Currently does not fetch the JSON file containing clinic data
-
+//Currently does not fetch the JSON file containing clinic data 
 const clinic_data = [
 	{"Name":"Weare Animal Hospital, Inc. Exotic and Bird Clinic of New Hampshire","Street":"91 North Stark Highway","City":"Weare","State":"NH","Zipcode":"3281"},
 	{"Name":"Patton Chapel Animal Clinic","Street":"1234 test","City":"Hoover","State":"AL","Zipcode":"12345"},
@@ -14,11 +13,13 @@ const clinic_data = [
 	{"Name":"Vetcor Jackson Veterinary Practice, P.A.","Street":"1925 A1A South","City":"St Augustine","State":"FL","Zipcode":"32080"}
 ];
 
+//Creates list of results to be displayed
 function setList(group) {
 	clearList();
 	for (const clinic of group) {
 		const item = document.createElement('li');
 		item.classList.add('list-group-item');
+		item.onclick = 'console.log(item.textContent)';
 		const text = document.createTextNode(clinic.Name + ', ' + clinic.City + ', ' + clinic.State + ', ' + clinic.Zipcode);
 		item.appendChild(text);
 		list.appendChild(item);
@@ -29,6 +30,7 @@ function setList(group) {
 	}
 }
 
+//Clears results displayed to the user
 function clearList() {
 	while (list.firstChild) {
 		list.removeChild(list.firstChild);
@@ -44,36 +46,39 @@ function noResult() {
 	list.appendChild(item);
 }
 
-function searchWord(word, place) {
-	if (place.Name.toLowerCase().includes(word)) {
-		return true;
-	} else if (place.City.toLowerCase().includes(word)) {
-		return true;
-	} else if (place.Street.toLowerCase().includes(word)) {
-		return true;
-	} else if (place.State.toLowerCase().includes(word)) {
-		return true;
-	} else if (place.Zipcode.toLowerCase().startsWith(word)) {
-		return true;
-	} else {
-		return false;
-	}
-}
 
-function searchRelevance(value, searchTerm) {
-	if (value === searchTerm) {
-		return 2;
-	} else if (value.startsWith(searchTerm)) {
-		return 1;
-	} else {
-		return 0;
+//Searches for prefix in clinic data which matches search term
+function searchWord(searchWord, place) {
+	for (const word of place.Name.toLowerCase().split(' ')) {
+		if (word.startsWith(searchWord)) {
+			return true;
+		}
 	}
+	for (const word of place.City.toLowerCase().split(' ')) {
+		if (word.startsWith(searchWord)) {
+			return true;
+		}
+	}
+	for (const word of place.Street.toLowerCase().split(' ')) {
+		if (word.startsWith(searchWord)) {
+			return true;
+		}
+	}
+	for (const word of place.State.toLowerCase().split(' ')) {
+		if (word.startsWith(searchWord)) {
+			return true;
+		}
+	}
+	if (place.Zipcode.startsWith(searchWord)) {
+		return true;
+	}
+	return false;
 }
 
 const searchInput = document.getElementById('search');
 const list = document.getElementById('list');
-var filtered_clinics = [];
-var data = [];
+var filtered_clinics = []; //stores clinics which match the search terms
+var data = []; //stores list of clinics which will be used for the search
 
 searchInput.addEventListener('input', (event) => {
 	if (event.data === null) {
@@ -100,3 +105,18 @@ searchInput.addEventListener('input', (event) => {
 		clearList();
 	}
 });
+
+//Clear search input and results
+let btnClear = document.getElementById('clear-btn');
+ 
+btnClear.addEventListener('click', () => {
+    searchInput.value = '';
+    clearList();
+});
+
+
+//Select clinic
+$('.list-group-item').click(function(selected) {
+  console.log("The selected option is: ", selected)
+})
+
