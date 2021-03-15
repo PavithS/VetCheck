@@ -122,13 +122,6 @@ list.addEventListener('click', function(e) {
     	selectedClinic = e.target.innerText;
     	searchInput.value = selectedClinic;
     	clearList();
-    	console.log(searchInput.value, selectedClinic)
     }
 });
-
-/*
-$('.list-group-item').click(function(selected) {
-  console.log("The selected option is: ", selected)
-})
-*/
 
