@@ -19,7 +19,6 @@ function setList(group) {
 	for (const clinic of group) {
 		const item = document.createElement('li');
 		item.classList.add('list-group-item');
-		item.onclick = 'console.log(item.textContent)';
 		const text = document.createTextNode(clinic.Name + ', ' + clinic.City + ', ' + clinic.State + ', ' + clinic.Zipcode);
 		item.appendChild(text);
 		list.appendChild(item);
@@ -79,6 +78,7 @@ const searchInput = document.getElementById('search');
 const list = document.getElementById('list');
 var filtered_clinics = []; //stores clinics which match the search terms
 var data = []; //stores list of clinics which will be used for the search
+var selectedClinic = null; //clinic selected by user
 
 searchInput.addEventListener('input', (event) => {
 	if (event.data === null) {
@@ -112,11 +112,23 @@ let btnClear = document.getElementById('clear-btn');
 btnClear.addEventListener('click', () => {
     searchInput.value = '';
     clearList();
+    selectedClinic = null;
 });
 
 
 //Select clinic
+list.addEventListener('click', function(e) {
+    if (e.target.tagName === 'LI'){
+    	selectedClinic = e.target.innerText;
+    	searchInput.value = selectedClinic;
+    	clearList();
+    	console.log(searchInput.value, selectedClinic)
+    }
+});
+
+/*
 $('.list-group-item').click(function(selected) {
   console.log("The selected option is: ", selected)
 })
+*/
 
