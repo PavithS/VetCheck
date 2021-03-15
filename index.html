@@ -1,19 +1,28 @@
 <html>
 
+<head>
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+
 <body>
-	
-	<div class="input-group">
-		<div class="input-group-prepend">
-			<span class="input-group-text" id="basic-addon1">
-				<span class=" fa fa-search"></span>
-			</span>
+	<div>
+		<div class="input-group">
+			<input type="text" name="search" placeholder="Search Clinics" class="form-control" type="text" autocomplete="off" id="search">
+			<button id="clear-btn">
+				<i class="fas fa-times-circle"></i>
+			</button>
 		</div>
-		<input type="text" name="search" autofocus placeholder="search" class="form-control" type="text" autocomplete="off" id="search">
+
+		<div>
+			<ul class="list-group" id="list" style="list-style-type: none"></ul>
+		</div>
 	</div>
 
-	<ul class="list-group" id="list"></ul>
-	
-	<script type="text/javascript" src="./search.js"></script>
+	<script src="./search.js"></script>
 
 </body>
 

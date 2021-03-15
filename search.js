@@ -1,13 +1,17 @@
 //Currently does not fetch the JSON file containing clinic data 
-
-var clinic_data = [];
-
-fetch('https://api.github.com/Pavith/VetCheck/Veterinary_clinic_data.json')
-.then(response => response.json())
-.then(clinic_data => {
-  console.log(clinic_data) // Prints result from `response.json()` in getRequest
-})
-.catch(error => console.error(error))
+const clinic_data = [
+	{"Name":"Weare Animal Hospital, Inc. Exotic and Bird Clinic of New Hampshire","Street":"91 North Stark Highway","City":"Weare","State":"NH","Zipcode":"3281"},
+	{"Name":"Patton Chapel Animal Clinic","Street":"1234 test","City":"Hoover","State":"AL","Zipcode":"12345"},
+	{"Name":"Arlington Pet Hospital","Street":"1234 test","City":"Arlington","State":"TN","Zipcode":"12345"},
+	{"Name":"Not Clinic","Street":"1234 test","City":"Evanston","State":"IL","Zipcode":"12345"},
+	{"Name":"Randolph Animal Hospital","Street":"1435 Zoo Parkway","City":"Asheboro","State":"NC","Zipcode":"27205"},
+	{"Name":"Willowrun Veterinary Hospital","Street":"1417 South Brightleaf Blvd.","City":"Smithfield","State":"NC","Zipcode":"27577"},
+	{"Name":"Park Vet Hospital","Street":"735 W NC Hwy 54","City":"Durham","State":"NC","Zipcode":"27713"},
+	{"Name":"Albemarle Animal Clinic","Street":"1639 NC 24-27 West Bypass","City":"Albemarle","State":"NC","Zipcode":"28001"},
+	{"Name":"Cabarrus Animal Hospital, Pa","Street":"3030 S. Cannon Blvd","City":"Kannapolis","State":"NC","Zipcode":"28083"},
+	{"Name":"West Stanly Animal Clinic","Street":"237 Town Centre Drive","City":"Locust","State":"NC","Zipcode":"28097"},
+	{"Name":"Vetcor Jackson Veterinary Practice, P.A.","Street":"1925 A1A South","City":"St Augustine","State":"FL","Zipcode":"32080"}
+];
 
 //Creates list of results to be displayed
 function setList(group) {
